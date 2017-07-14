@@ -1,12 +1,12 @@
 <html>
     <head>
-        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>        <title></title>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>        <title>Scher's Shears</title>
     </head>
     <body>
         <div class="container">
             <div class="jumbotron">
-                <h1>Buzz Off</h1>
-                <h2>Get your hair buzzed!</h2>
+                <h1>Scher's Shears</h1>
+                <h2>Stylist and Client Management</h2>
             </div>
 
             <form action="/" id="add_stylist" method="post">
@@ -21,7 +21,7 @@
                 <h3>Pick a stylist:</h3>
                 {% for stylist in stylists %}
                     <ul class="list-unstyled">
-                        <li>{{ stylist.getName }}</li>
+                        <li> <a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }}</a></li>
                     </ul>
                 {% endfor %}
                 <a href="/all_stylists_deleted">Delete All Stylists</a>

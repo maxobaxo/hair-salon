@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>        <title>Scher's Shears</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Scher's Shears</h1>
+                <h2>Stylist and Client Management</h2>
+            </div>
+
+            {% if clients is not empty %}
+                <h2>{{ stylist.getName }}'s Clients</h2>
+                <ul class="unstyled">
+                    {% for client in clients %}
+                        <li>{{ client.getName }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <h3>You have not assigned any clients to {{ stylist.getName}}</h3>
+            {% endif %}
+
+            <form action="/clients" method="post" id="add_client">
+                <div class="form-group">
+                    <h3>Add a new Client for {{ stylist.getName }}</h3>
+
+                    <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                    <input placeholder="Client's Full Name" class="form-control" type="text" name="name_cl" id="name_cl">
+                </div>
+
+                <button type="submit" class="btn btn-info">Add</button>
+            </form>
+
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

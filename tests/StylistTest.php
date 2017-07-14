@@ -61,7 +61,6 @@
 
             // Assert
             $this->assertTrue($executed, "The new stylist has NOT been added to the database");
-
         }
 
         function testGetId()
@@ -103,18 +102,13 @@
             $test_stylist = new Stylist($name_st);
             $test_stylist->save();
 
-            // var_dump($test_stylist);
-
             $name_st_2 = "Aureliano Mateus";
             $test_stylist_2 = new Stylist($name_st_2);
             $test_stylist_2->save();
 
-            // var_dump($test_stylist_2);
-
             // Act
             $result = Stylist::getAll();
 
-            // var_dump($result);
 
             // Assert
             $this->assertEquals([$test_stylist, $test_stylist_2], $result);
@@ -127,23 +121,32 @@
             $test_stylist = new Stylist($name_st);
             $test_stylist->save();
 
-            // var_dump($test_stylist);
-
             $name_st_2 = "Aureliano Mateus";
             $test_stylist_2 = new Stylist($name_st_2);
             $test_stylist_2->save();
-
-            // var_dump($test_stylist_2);
 
             // Act
             Stylist::deleteAll();
             $result = Stylist::getAll();
 
-            // var_dump(Stylist::deleteAll());
-
             // Assert
             $this->assertEquals([], $result);
+        }
 
+        function testUpdate()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+
+            $new_name_st = "Winifred Mateus";
+
+            // Act
+            $test_stylist->update($new_name_st);
+
+            // Assert
+            $this->assertEquals("Winifred Mateus", $test_stylist->getName());
         }
     }
 ?>

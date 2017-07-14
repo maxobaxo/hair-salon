@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>        <title></title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Buzz Off</h1>
+                <h2>Get your hair buzzed by Buzz and the team at Buzz Off!</h2>
+            </div>
+
+            <form action="/" id="add_stylist" method="post">
+                <h3>Add a Stylist</h3>
+                <div class="form-group">
+                    <input placeholder="Full Name" class="form-control" type="text" name="name_st" id="name_st">
+                </div>
+                <button type="submit" class="btn btn-info">Add</button>
+            </form>
+
+            {% if stylists is not empty %}
+                <h3>Pick a stylist:</h3>
+                {% for stylist in stylists %}
+                    <ul class="list-unstyled">
+                        <li>{{ stylist.getName }}</li>
+                    </ul>
+                {% endfor %}
+                <a href="/all_stylists_deleted">Delete All Stylists</a>
+            {% else %}
+                <h3>You have not added any stylists to the system!</h3>
+            {% endif %}
+
+
+        </div>
+    </body>
+</html>

@@ -104,20 +104,20 @@
 
         function testSave()
         {
-            // // Arrange
-            // $name_st = "Winifred Jones";
-            // $test_stylist = new Stylist($name_st);
-            // $test_stylist->save();
-            // $stylist_id = $test_stylist->getId();
-            //
-            // $name_cl = "Joey Ramone";
-            // $test_client = new Client($name_cl, $stylist_id);
-            //
-            // // Act
-            // $executed = $test_client->save();
-            //
-            // // Assert
-            // $this->assertTrue($executed, "The new client has NOT been added to the database");
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+
+            $name_cl = "Joey Ramone";
+            $test_client = new Client($name_cl, $stylist_id);
+
+            // Act
+            $executed = $test_client->save();
+
+            // Assert
+            $this->assertTrue($executed, "The new client has NOT been added to the database");
         }
 
         // function testFind()

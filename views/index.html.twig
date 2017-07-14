@@ -6,7 +6,7 @@
         <div class="container">
             <div class="jumbotron">
                 <h1>Scher's Shears</h1>
-                <h2>Stylist and Client Management</h2>
+                <h2>Stylist and Client Management Portal</h2>
             </div>
 
             <form action="/" id="add_stylist" method="post">
@@ -19,12 +19,29 @@
 
             {% if stylists is not empty %}
                 <h3>Pick a stylist:</h3>
-                {% for stylist in stylists %}
                     <ul class="list-unstyled">
-                        <li> <a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }}</a></li>
+                        {% for stylist in stylists %}
+                            <form id="delete_stylist" action="/delete_stylist" method="post">
+                                <input type="hidden" name="client_id" value="{{ client.getId }}">
+                                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+
+                                <li>
+                                    <h4><a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }} | <button type="submit" class="btn btn-danger">Delete</button></a></h4>
+                                </li>
+                            </form>
+                        {% endfor %}
                     </ul>
-                {% endfor %}
-                <a href="/all_stylists_deleted">Delete All Stylists</a>
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h4>Destroy Your Business with the click of a button</h4>
+                    </div>
+                    <div class="panel-body">
+                        <a href="/all_stylists_deleted">Delete All Stylists</a> <br>
+                        <a href="/all_clients_deleted">Delete All Clients</a>
+                    </div>
+                    <div class="panel-footer">
+                    </div>
+                </div>
             {% else %}
                 <h3>You have not added any stylists to the system!</h3>
             {% endif %}

@@ -1,0 +1,8 @@
+<li>
+    <form action="/stylists/{id}/delete_client">
+        <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+        <button type="submit" class="btn btn-danger">
+            Delete all of {{ stylist.getName }}'s clients'
+        </button>
+    </form>
+</li>

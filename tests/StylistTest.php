@@ -140,6 +140,24 @@
             $test_stylist = new Stylist($name_st);
             $test_stylist->save();
 
+            $name_st_2 = "Aureliano Mateus";
+            $test_stylist_2 = new Stylist($name_st_2);
+            $test_stylist_2->save();
+
+            // Act
+            $test_stylist->delete();
+
+            // Assert
+            $this->assertEquals([$test_stylist_2], Stylist::getAll());
+        }
+
+        function testDelete()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+
             $new_name_st = "Winifred Mateus";
 
             // Act

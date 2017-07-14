@@ -72,6 +72,24 @@
 
             // Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function testFind()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+
+            $name_st_2 = "Aureliano Mateus";
+            $test_stylist_2 = new Stylist($name_st_2);
+            $test_stylist_2->save();
+
+            // Act
+            $result = Stylist::find($test_stylist_2->getId());
+
+            // Assert
+            $this->assertEquals($test_stylist_2, $result);
 
         }
     }

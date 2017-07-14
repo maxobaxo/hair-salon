@@ -36,9 +36,20 @@
             return $this->id;
         }
 
-        function find()
+        static function find($search_id)
         {
-
+            $found_stylist = null;
+            $returned_stylists = $GLOBALS['DB']->prepare("SELECT * FROM stylists WHERE id = :id");
+            $returned_stylists->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_stylists->execute();
+            foreach($returned_stylists as $stylist) {
+                $name_st = $stylist['name_st'];
+                $id = $stylist['id'];
+                if ($id == $search_id) {
+                    $found_stylist = new Stylist($name_st, $id);
+                }
+            }
+            return $found_stylist;
         }
 
         function update()

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Scher's Shears</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Scher's Shears</h1>
+                <h2>Stylist and Client Management Portal</h2>
+            </div>
+            <h3>Edit information about {{ stylist.getName }} below: </h3>
+            <form action="/edit_stylist" id="edit_stylist_info">
+                <div class="form-group">
+                    <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                    <input placeholder="{{ stylist.getName }}" class="form-control" type="text" name="new_name_st" id="name_st">
+                </div>
+                <button type="submit" class="btn btn-info">Edit</button>
+            </form>
+            <h3>...or...</h3>
+            <form action="/delete_stylist" id="delete_stylist">
+                <button type="submit" class="btn btn-danger">Delete Stylist</button>
+            </form>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

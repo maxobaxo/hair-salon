@@ -22,6 +22,27 @@
         return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
     });
 
+    $app->get('/stylist/{id}/edit', function($id) use ($app) {
+        $stylist = Stylist::find($id);
+
+        return $app['twig']->render('edit_stylist.html.twig', array('stylist' => $stylist));
+    });
+
+    $app->get('/edit_stylist', function() use ($app) {
+        $new_name_st = $_GET['new_name_st'];
+
+        $stylist_id = $_GET['stylist_id'];
+        $stylist = Stylist::find($stylist_id);
+        $stylist->update($new_name_st);
+
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
+    $app->get('/delete_stylist', function() use ($app) {
+
+        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
+    });
+
     $app->post('/', function() use ($app) {
         $name_st = $_POST['name_st'];
         $stylist = new Stylist($name_st);
@@ -67,14 +88,6 @@
         return $app['twig']->render('stylist.html.twig', array('stylist' => $stylist, 'clients' => $clients));
     });
 
-    $app->post('/delete_stylist', function() use ($app) {
-        $name_st = $_POST['name_st'];
-        $stylist_id = $_POST['stylist_id'];
-        $stylist = Stylist::find($stylist_id);
-        $stylist->delete();
-
-        return $app['twig']->render('index.html.twig', array('stylists' => Stylist::getAll()));
-    });
 
 
     return $app;

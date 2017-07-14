@@ -19,25 +19,24 @@
 
             {% if stylists is not empty %}
                 <h3>Pick a stylist:</h3>
-                    <ul class="list-unstyled">
-                        {% for stylist in stylists %}
-                            <form id="delete_stylist" action="/delete_stylist" method="post">
-                                <input type="hidden" name="client_id" value="{{ client.getId }}">
-                                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                <ul class="list-unstyled">
+                    {% for stylist in stylists %}
+                        <li>
+                            <h4><a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }}</a> |
+                            <a class="btn btn-success" href="/stylist/{{ stylist.getId }}/edit">Edit</a></h4>
 
-                                <li>
-                                    <h4><a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }} | <button type="submit" class="btn btn-danger">Delete</button></a></h4>
-                                </li>
-                            </form>
-                        {% endfor %}
-                    </ul>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+
                 <div class="panel panel-info">
                     <div class="panel-heading">
                         <h4>Destroy Your Business with the click of a button</h4>
                     </div>
                     <div class="panel-body">
                         <a href="/all_stylists_deleted">Delete All Stylists</a> <br>
-                        <a href="/all_clients_deleted">Delete All Clients</a>
+                        <!-- <a href="/all_clients_deleted">Delete All Clients</a> -->
                     </div>
                     <div class="panel-footer">
                     </div>
@@ -45,7 +44,6 @@
             {% else %}
                 <h3>You have not added any stylists to the system!</h3>
             {% endif %}
-
 
         </div>
     </body>

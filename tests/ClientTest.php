@@ -60,25 +60,25 @@
             $this->assertEquals("Joey Ramone", $result);
         }
 
-        // function testGetId()
-        // {
-        //     // Arrange
-        //     $name_st = "Winifred Jones";
-        //     $test_stylist = new Stylist($name_st);
-        //     $test_stylist->save();
-        //     $stylist_id = $test_stylist->getId();
-        //
-        //     $name_cl = "Joey Ramone";
-        //     $test_client = new Client($name_cl, $stylist_id);
-        //     $test_client->save();
-        //
-        //     // Act
-        //     $result = $test_client->getId();
-        //
-        //     // Assert
-        //     $this->assertEquals(true, is_numeric($result));
-        // }
-        //
+        function testGetId()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+
+            $name_cl = "Joey Ramone";
+            $test_client = new Client($name_cl, $stylist_id);
+            $test_client->save();
+
+            // Act
+            $result = $test_client->getId();
+
+            // Assert
+            $this->assertEquals(true, is_numeric($result));
+        }
+
         // function testSave()
         // {
         //     // Arrange

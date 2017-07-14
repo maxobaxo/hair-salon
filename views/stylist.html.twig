@@ -14,18 +14,15 @@
                 <ul class="unstyled">
                     {% for client in clients %}
                             <li>
-                                <h4>{{ client.getName }} | <a class="btn btn-danger" href="/client/{{ client.getId }}/edit">Edit</a></h4>
+                                <h4>{{ client.getName }} | <a class="btn btn-info" href="/client/{{ client.getId }}/edit">Edit</a></h4>
                             </li>
                     {% endfor %}
-                    <li>
-                        <form action="/stylists/{{ stylist.getId }}/delete_clients">
-                            <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
-                            <button type="submit" class="btn btn-danger">
-                                Delete all of {{ stylist.getName }}'s clients'
-                            </button>
-                        </form>
-                    </li>
                 </ul>
+                <form action="/stylist/{{ stylist.getId }}/delete_clients">
+                    <button type="submit" class="btn btn-danger">
+                        Delete all of {{ stylist.getName }}'s clients.
+                    </button>
+                </form>
 
             {% else %}
                 <h3>You have not assigned any clients to {{ stylist.getName}}</h3>

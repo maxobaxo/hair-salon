@@ -13,7 +13,14 @@
                 <h2>{{ stylist.getName }}'s Clients</h2>
                 <ul class="unstyled">
                     {% for client in clients %}
-                        <li>{{ client.getName }}</li>
+                        <form id="delete_client" action="/delete_client" method="post">
+                            <input type="hidden" name="client_id" value="{{ client.getId }}">
+                            <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
+                            <li>
+                                <h4>{{ client.getName }} |
+                                <button type="submit" class="btn btn-danger">Delete</button></h4>
+                            </li>
+                        </form>
                     {% endfor %}
                 </ul>
             {% else %}

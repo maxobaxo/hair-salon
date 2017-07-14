@@ -20,6 +20,11 @@
             return $this->name_st;
         }
 
+        function getId()
+        {
+            return $this->id;
+        }
+
         function save()
         {
             $executed = $GLOBALS['DB']->exec("INSERT INTO stylists (name_st) VALUES ('{$this->getName()}')");
@@ -31,10 +36,6 @@
             }
         }
 
-        function getId()
-        {
-            return $this->id;
-        }
 
         static function find($search_id)
         {

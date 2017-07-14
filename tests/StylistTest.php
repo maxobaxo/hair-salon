@@ -17,6 +17,7 @@
         protected function tearDown()
         {
             Stylist::deleteAll();
+            // Client::deleteAll();
         }
 
         function testGetName()
@@ -50,19 +51,6 @@
             $this->assertEquals("Winifred Mateus", $result);
         }
 
-        function testSave()
-        {
-            // Arrange
-            $name_st = "Winifred Jones";
-            $test_stylist = new Stylist($name_st);
-
-            // Act
-            $executed = $test_stylist->save();
-
-            // Assert
-            $this->assertTrue($executed, "The new stylist has NOT been added to the database");
-        }
-
         function testGetId()
         {
             // Arrange
@@ -75,6 +63,19 @@
 
             // Assert
             $this->assertEquals(true, is_numeric($result));
+        }
+
+        function testSave()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+
+            // Act
+            $executed = $test_stylist->save();
+
+            // Assert
+            $this->assertTrue($executed, "The new stylist has NOT been added to the database");
         }
 
         function testFind()
@@ -144,11 +145,13 @@
             $test_stylist_2 = new Stylist($name_st_2);
             $test_stylist_2->save();
 
+            $new_name_st = "Winifred Mateus";
+
             // Act
-            $test_stylist->delete();
+            $test_stylist->update($new_name_st);
 
             // Assert
-            $this->assertEquals([$test_stylist_2], Stylist::getAll());
+            $this->assertEquals("Winifred Mateus", $test_stylist->getName());
         }
 
         function testDelete()
@@ -158,13 +161,15 @@
             $test_stylist = new Stylist($name_st);
             $test_stylist->save();
 
-            $new_name_st = "Winifred Mateus";
+            $name_st_2 = "Aureliano Mateus";
+            $test_stylist_2 = new Stylist($name_st_2);
+            $test_stylist_2->save();
 
             // Act
-            $test_stylist->update($new_name_st);
+            $test_stylist->delete();
 
             // Assert
-            $this->assertEquals("Winifred Mateus", $test_stylist->getName());
+            $this->assertEquals([$test_stylist_2], Stylist::getAll());
         }
     }
 ?>

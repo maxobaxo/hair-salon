@@ -13,12 +13,13 @@
             <form action="/edit_stylist" id="edit_stylist_info">
                 <div class="form-group">
                     <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
-                    <input placeholder="{{ stylist.getName }}" class="form-control" type="text" name="new_name_st" id="name_st">
+                    <input placeholder="{{ stylist.getName }}" class="form-control" type="text" name="new_name_st" id="new_name_st">
                 </div>
                 <button type="submit" class="btn btn-info">Edit</button>
             </form>
             <h3>...or...</h3>
             <form action="/delete_stylist" id="delete_stylist">
+                <input type="hidden" name="stylist_id" value="{{ stylist.getId }}">
                 <button type="submit" class="btn btn-danger">Delete Stylist</button>
             </form>
             <a href="/">Home</a>

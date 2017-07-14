@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <title>Scher's Shears</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Scher's Shears</h1>
+                <h2>Stylist and Client Management Portal</h2>
+            </div>
+            <h3>Edit information about {{ client.getName }} below: </h3>
+            <form action="/edit_client" id="edit_client_info">
+                <div class="form-group">
+                    <input type="hidden" name="client_id" value="{{ client.getId }}">
+                    <input type="hidden" name="stylist_id" value="{{ client.getStylistId }}">
+                    <input placeholder="{{ client.getName }}" class="form-control" type="text" name="new_name_cl" id="new_name_cl">
+                </div>
+                <button type="submit" class="btn btn-info">Edit</button>
+            </form>
+            <h3>...or...</h3>
+            <form action="/delete_client" id="delete_client">
+                <input type="hidden" name="client_id" value="{{ client.getId }}">
+                <input type="hidden" name="stylist_id" value="{{ client.getStylistId }}">
+                <button type="submit" class="btn btn-danger">Delete Client</button>
+            </form>
+            <a href="/">Home</a>
+        </div>
+    </body>
+</html>

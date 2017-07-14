@@ -50,6 +50,16 @@
             return $clients;
         }
 
+        function deleteClients()
+        {
+            $executed = $GLOBALS['DB']->exec("DELETE FROM clients WHERE stylist_id = {$this->getId()};");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         static function find($search_id)
         {
             $found_stylist = null;

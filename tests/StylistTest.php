@@ -194,5 +194,29 @@
             // Assert
             $this->assertEquals([$test_stylist_2], Stylist::getAll());
         }
+
+        function testDeleteClients()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+            $stylist_id = $test_stylist->getId();
+
+            $name_cl = "Joey Ramone";
+            $test_client = new Client($name_cl, $stylist_id);
+            $test_client->save();
+
+            $name_cl_2 = "Dee Dee Ramone";
+            $test_client_2 = new Client($name_cl_2, $stylist_id);
+            $test_client_2->save();
+
+            // Act
+            $test_stylist->deleteClients();
+            $result = $test_stylist->getClients();
+
+            // Assert
+            $this->assertEquals([], $result);
+        }
     }
 ?>

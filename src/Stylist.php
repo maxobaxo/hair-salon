@@ -12,7 +12,7 @@
 
         function setName($new_name_st)
         {
-            $this->name_st = $new_name_st;
+            $this->name_st = (string) $new_name_st;
         }
 
         function getName()
@@ -64,12 +64,25 @@
 
         static function getAll()
         {
-
+            $returned_stylists = $GLOBALS['DB']->query("SELECT * FROM stylists;");
+            $all_stylists = array();
+            foreach ($returned_stylists as $stylist) {
+                $name_st = $stylist['name_st'];
+                $id = $stylist['id'];
+                $new_stylist = new Stylist($name_st, $id);
+                array_push($all_stylists, $new_stylist);
+            }
+            return $all_stylists;
         }
 
         static function deleteAll()
         {
-
+            $executed = $GLOBALS['DB']->exec("DELETE FROM stylists;");
+            if ($executed) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
 ?>

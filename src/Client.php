@@ -13,7 +13,7 @@
 
         function setName($new_name_cl)
         {
-            // $this->name_cl = (string) $new_name_cl;
+            $this->name_cl = (string) $new_name_cl;
         }
 
         function getName()

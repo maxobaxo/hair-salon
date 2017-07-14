@@ -32,21 +32,21 @@
             return $this->stylist_id;
         }
 
-        function find($search_id)
+        static function find($search_id)
         {
-            // $found_client = null;
-            // $returned_clients = $GLOBALS['DB']->prepare("SELECT * FROM clients WHERE id = :id");
-            // $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
-            // $returned_clients->execute();
-            // foreach($returned_clients as $client) {
-            //     $name_cl = $client['name'];
-            //     $stylist_id = $client['stylist_id'];
-            //     $id = $client['id'];
-            //     if ($id == $search_id) {
-            //         $found_client = new Client($name_cl, $stylist_id, $id);
-            //     }
-            // }
-            // return $found_client;
+            $found_client = null;
+            $returned_clients = $GLOBALS['DB']->prepare("SELECT * FROM clients WHERE id = :id");
+            $returned_clients->bindParam(':id', $search_id, PDO::PARAM_STR);
+            $returned_clients->execute();
+            foreach($returned_clients as $client) {
+                $name_cl = $client['name_cl'];
+                $stylist_id = $client['stylist_id'];
+                $id = $client['id'];
+                if ($id == $search_id) {
+                    $found_client = new Client($name_cl, $stylist_id, $id);
+                }
+            }
+            return $found_client;
         }
 
         function update()

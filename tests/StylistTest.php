@@ -59,5 +59,20 @@
             $this->assertTrue($executed, "The new stylist has NOT been added to the database");
 
         }
+
+        function testGetId()
+        {
+            // Arrange
+            $name_st = "Winifred Jones";
+            $test_stylist = new Stylist($name_st);
+            $test_stylist->save();
+
+            // Act
+            $result = $test_stylist->getId();
+
+            // Assert
+            $this->assertEquals(true, is_numeric($result));
+
+        }
     }
 ?>

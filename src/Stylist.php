@@ -33,7 +33,7 @@
 
         function getId()
         {
-
+            return $this->id;
         }
 
         function find()

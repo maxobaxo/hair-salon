@@ -1,6 +1,8 @@
 <html>
     <head>
-        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>        <title>Scher's Shears</title>
+        <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/styles.css" typ="text/css">
+        <title>Scher's Shears</title>
     </head>
     <body>
         <div class="container">
@@ -9,41 +11,50 @@
                 <h2>Stylist and Client Management Portal</h2>
             </div>
 
-            <form action="/" id="add_stylist" method="post">
-                <h3>Add a Stylist</h3>
-                <div class="form-group">
-                    <input placeholder="Full Name" class="form-control" type="text" name="name_st" id="name_st">
-                </div>
-                <button type="submit" class="btn btn-info">Add</button>
-            </form>
-
-            {% if stylists is not empty %}
-                <h3>Pick a stylist:</h3>
-                <ul class="list-unstyled">
-                    {% for stylist in stylists %}
-                        <li>
-                            <h4><a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }}</a> |
-                            <a class="btn btn-success" href="/stylist/{{ stylist.getId }}/edit">Edit</a></h4>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-
-                <div class="panel panel-info">
-                    <div class="panel-heading">
-                        <h4>Destroy Your Business with the click of a button</h4>
-                    </div>
-                    <div class="panel-body">
-                        <a href="/all_stylists_deleted">Delete All Stylists</a> <br>
-                        <!-- <a href="/all_clients_deleted">Delete All Clients</a> -->
-                    </div>
-                    <div class="panel-footer">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="well">
+                        <h2>Manage all information related to the stylists employed by Scher's Shears and the clients they serve.</h2>
                     </div>
                 </div>
-            {% else %}
-                <h3>You have not added any stylists to the system!</h3>
-            {% endif %}
-
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <form action="/" id="add_stylist" method="post">
+                        <div class="form-group well">
+                            <h3>Add a Stylist
+                            <button type="submit" class="btn btn-info">Add</button></h3>
+                            <input placeholder="Full Name" class="form-control" type="text" name="name_st" id="name_st">
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-8">
+                    {% if stylists is not empty %}
+                        <h3>Pick a stylist:</h3>
+                        <ul class="list-unstyled">
+                            {% for stylist in stylists %}
+                                <li>
+                                    <h4><a href="/stylists/{{ stylist.getId }}"> {{ stylist.getName }}</a> |
+                                    <a class="btn btn-success" href="/stylist/{{ stylist.getId }}/edit">Edit</a></h4>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="panel panel-info">
+                            <div class="panel-heading">
+                                <h4>Destroy Your Business with the click of a button</h4>
+                            </div>
+                            <div class="panel-body">
+                                <a href="/all_stylists_deleted">Delete All Stylists</a> <br>
+                                <a href="/all_clients_deleted">Delete All Clients</a>
+                            </div>
+                            <div class="panel-footer">
+                            </div>
+                        </div>
+                    {% else %}
+                        <h3>You have not added any stylists to the system!</h3>
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </body>
 </html>

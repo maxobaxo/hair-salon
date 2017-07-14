@@ -41,11 +41,17 @@ Access Project Repository & Open Project
     * Go to preferences>web server and click on the folder icon next to 'document root'.
     * Click on 'web' folder of project and hit 'select'.
     * Hit ok at the bottom of the preferences window.
-
 * In your browser, enter the url 'localhost:8888' to view the webpage.
 
 ## Specifications
-
+* It can allow the salon manager to do the following:
+    * add and edit stylist information.
+    * add a new (or assign an existing) client to a given stylist.
+    * delete a client from a stylist's record.
+    * delete a stylist from the salon database.
+    * delete all of the clients of a given stylist.
+    * delete all stylists in the database.
+    * delete all clients in the database.
 
 ## Languages/Technologies Used
 Git, HTML, PHP, Silex, Twig, PHPUnit, CSS, SQL, MySQL, Apache, MAMP

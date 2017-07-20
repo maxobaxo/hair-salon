@@ -41,6 +41,9 @@ Access Project Repository & Open Project
     * Go to preferences>web server and click on the folder icon next to 'document root'.
     * Click on 'web' folder of project and hit 'select'.
     * Hit ok at the bottom of the preferences window.
+* Open a new window in your browser, enter the URL: localhost:8888/phpMyAdmin
+    * Choose the Import tab and select the hair_salon.sql.zip file and click Go.
+    * It's important to make sure you're not importing to a database that already exists, so make sure that a database with the name hair_salon doesn't already exist locally.
 * In your browser, enter the url 'localhost:8888' to view the webpage.
 
 ## Specifications
